@@ -1,0 +1,6 @@
+com\ing\kata\banking\model\Customer.class
+com\ing\kata\banking\service\BankingService.class
+com\ing\kata\banking\controller\BankingController.class
+com\ing\kata\banking\model\Transaction.class
+com\ing\kata\banking\repository\BankingRepository.class
+com\ing\kata\banking\BankingApplication.class
