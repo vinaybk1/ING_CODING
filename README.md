@@ -45,6 +45,8 @@ RUN
 =====================================================================================
 Open Postman or any other rest client
 
+Settings : Set the Body and JSON options after selecting POST 
+
 User Story 1 : Deposit Money
 url : localhost:8080/banking/deposit (POST Request)
 param : {
@@ -54,20 +56,20 @@ param : {
 			
 			
 User Story 1 : Withdraw Money
-url : localhost:8080/banking/deposit (POST Request)
+url : localhost:8080/banking/withdraw (POST Request)
 param : {
 			"accountNumber":"12345",
 			"amount":"50"
 		}
 		
 User Story 1 : Account Balance
-url : localhost:8080/banking/deposit (POST Request)
+url : localhost:8080/banking/getBalance (POST Request)
 param : {
 			"accountNumber":"12345"
 		}
 		
 User Story 1 : Get Transactions
-url : localhost:8080/banking/deposit (POST Request)
+url : localhost:8080/banking/getTransactions (POST Request)
 param : {
 			"accountNumber":"12345"
 		}

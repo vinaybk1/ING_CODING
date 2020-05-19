@@ -24,6 +24,7 @@ public class BankingService {
 
 	public Transaction depositAmount(@Valid Transaction transaction) {
 		transaction.setTransactionType("DEPOSIT");
+		transaction.setStatus("SUCCESS");
 		List<Transaction> list = repository.getTransactions(transaction.getAccountNumber());
 
 		Optional<Transaction> transact = list.stream().findFirst();
@@ -41,6 +42,7 @@ public class BankingService {
 
 	public Transaction withdrawAmount(@Valid Transaction transaction) {
 		transaction.setTransactionType("WITHDRAW");
+		transaction.setStatus("SUCCESS");
 		List<Transaction> list = repository.getTransactions(transaction.getAccountNumber());
 
 		Optional<Transaction> transact = list.stream().findFirst();
