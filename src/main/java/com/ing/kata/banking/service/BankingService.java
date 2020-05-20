@@ -54,19 +54,12 @@ public class BankingService {
 		transaction.setTransactionType("WITHDRAW");
 		transaction.setStatus("SUCCESS");
 		
-		double balance = 0;
-		try {
-			balance = getBalance(transaction.getAccountNumber());
+		double balance = getBalance(transaction.getAccountNumber());
 			if(transaction.getAmount()>balance || balance==0){
 				throw new BankingException("INVALID REQUEST", "No sufficient balance");
 			}else{
 				transaction.setBalance(balance - transaction.getAmount());
 			}
-			
-		} catch (BankingException e) {
-			logger.error("Error while fetching balance for withdraw :: "+e.getMessage());
-			throw new BankingException("INVALID REQUEST", "Account does not exist ");
-		}
 		
 		return repository.save(transaction);
 	}

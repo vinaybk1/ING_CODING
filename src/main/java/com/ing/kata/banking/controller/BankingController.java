@@ -1,19 +1,16 @@
 package com.ing.kata.banking.controller;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import com.ing.kata.banking.execption.BankingException;
 import com.ing.kata.banking.model.Transaction;
@@ -56,13 +53,14 @@ public class BankingController {
 	}
 	
 	@PostMapping("/getTransactions")
-	public List<Transaction> getTransactions(@Valid @RequestBody Transaction transaction) {
+	public List<Transaction> getTransactionsForAccount(@Valid @RequestBody Transaction transaction) throws BankingException{
 		logger.debug("Get Transactions for the account number :: "+transaction.getAccountNumber());
-		try{
-			return service.getTransactions(transaction.getAccountNumber());
-		}catch(NoSuchElementException excep){
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Account Number does not exist");
-		}
+			List<Transaction> transactionList = service.getTransactions(transaction.getAccountNumber());
+			if(transactionList.isEmpty()){
+				throw new BankingException("INVALID REQUEST", "No Transaction present for the account");
+			}else{
+				return transactionList;
+			}
 		
 	}
 }

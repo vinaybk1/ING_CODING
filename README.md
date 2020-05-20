@@ -18,15 +18,6 @@ spring.jpa.hibernate.ddl-auto=create
 spring.jpa.properties.hibernate.format_sql=true
 
 ====================================================================================
-Table Structure (create query)
-
-CREATE TABLE "TEST"."TRANSACTION" 
-   (	"TRANSACTION_ID" NUMBER(19,0) NOT NULL PRIMARY KEY, 
-	"ACCOUNT_NUMBER" NUMBER(19,0), 
-	"AMOUNT" FLOAT(126), 
-	"BALANCE" FLOAT(126), 
-	"STATUS" VARCHAR2(255 CHAR), 
-	"TYPE" VARCHAR2(255 CHAR));
 
 ====================================================================================
 RUN
@@ -46,6 +37,7 @@ RUN
 Open Postman or any other rest client
 
 Settings : Set the Body and JSON options after selecting POST 
+           Provide Basic Auth with username = test and password = test123
 
 User Story 1 : Deposit Money
 url : localhost:8080/banking/deposit (POST Request)
@@ -73,3 +65,7 @@ url : localhost:8080/banking/getTransactions (POST Request)
 param : {
 			"accountNumber":"12345"
 		}
+============================================================================================
+For Security : Basic Authentication is provided with username=test and password=test123
+
+For CI/CD - Jenkins Pipeline can be used
