@@ -18,7 +18,17 @@ spring.jpa.hibernate.ddl-auto=create
 spring.jpa.properties.hibernate.format_sql=true
 
 ====================================================================================
+TABLE CREATION QUERY
 
+  CREATE TABLE TRANSACTION
+   (	"TRANSACTION_ID" NUMBER(19,0) PRIMARY KEY, 
+	"ACCOUNT_NUMBER" NUMBER(19,0), 
+	"AMOUNT" FLOAT(126), 
+	"BALANCE" FLOAT(126), 
+	"STATUS" VARCHAR2(255 CHAR), 
+	"TRANSACTION_DATE" TIMESTAMP (6), 
+	"TYPE" VARCHAR2(255 CHAR))
+	
 ====================================================================================
 Steps to RUN
 
