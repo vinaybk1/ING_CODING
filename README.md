@@ -20,8 +20,7 @@ spring.jpa.properties.hibernate.format_sql=true
 ====================================================================================
 
 ====================================================================================
-RUN
-====
+Steps to RUN
 
 1) To Run the you can start the program from eclipse
    Right click the BankingApplication.java and run as JavaApplication
@@ -68,5 +67,7 @@ param : {
 		
 ============================================================================================
 For Security : Basic Authentication is provided with username=test and password=test123
+
+For Persistance: Spring JPA
 
 For CI/CD - Jenkins Pipeline can be used
