@@ -47,24 +47,25 @@ param : {
 			}
 			
 			
-User Story 1 : Withdraw Money
+User Story 2 : Withdraw Money
 url : localhost:8080/banking/withdraw (POST Request)
 param : {
 			"accountNumber":"12345",
 			"amount":"50"
 		}
 		
-User Story 1 : Account Balance
+User Story 3 : Account Balance
 url : localhost:8080/banking/getBalance (POST Request)
 param : {
 			"accountNumber":"12345"
 		}
 		
-User Story 1 : Get Transactions
+User Story 4 : Get Transactions
 url : localhost:8080/banking/getTransactions (POST Request)
 param : {
 			"accountNumber":"12345"
 		}
+		
 ============================================================================================
 For Security : Basic Authentication is provided with username=test and password=test123
 
