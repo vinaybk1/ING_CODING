@@ -34,7 +34,7 @@ public class BankingService {
 
 	public Transaction depositAmount(Transaction transaction) {
 		transaction.setTransactionType("DEPOSIT");
-		transaction.setStatus("SUCCESS");
+		
 		double balance = 0;
 		try {
 			balance = getBalance(transaction.getAccountNumber());
@@ -46,13 +46,12 @@ public class BankingService {
 		}
 		
 		transaction.setBalance(transaction.getAmount()+balance);
-	
+		transaction.setStatus("SUCCESS");
 		return repository.save(transaction);
 	}
 
 	public Transaction withdrawAmount(Transaction transaction) throws BankingException {
 		transaction.setTransactionType("WITHDRAW");
-		transaction.setStatus("SUCCESS");
 		
 		double balance = getBalance(transaction.getAccountNumber());
 			if(transaction.getAmount()>balance || balance==0){
@@ -60,7 +59,7 @@ public class BankingService {
 			}else{
 				transaction.setBalance(balance - transaction.getAmount());
 			}
-		
+			transaction.setStatus("SUCCESS");
 		return repository.save(transaction);
 	}
 
