@@ -11,7 +11,10 @@ import com.ing.kata.banking.model.Transaction;
 @Repository
 public interface BankingRepository extends JpaRepository<Transaction, Long> {
 
-	@Query("FROM Transaction WHERE accountNumber = ?1 ORDER BY transactionId DESC")
+	@Query("FROM Transaction WHERE accountNumber = ?1 ORDER BY Transaction_Date DESC")
 	List<Transaction> getTransactions(long accountNumber);
+
+	@Query(nativeQuery = true, value = "SELECT * FROM (SELECT * FROM Transaction WHERE account_Number = :accountNumber ORDER BY Transaction_Date DESC) WHERE ROWNUM<=1")
+	List<Transaction> getBalanceTransactions(@Param("accountNumber")long accountNumber);
 
 }

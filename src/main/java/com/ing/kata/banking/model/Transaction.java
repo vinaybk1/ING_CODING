@@ -1,5 +1,7 @@
 package com.ing.kata.banking.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,11 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "Transaction")
 public class Transaction {
 	
-	@Column(name = "accountNumber")
+	public Transaction() {
+		super();
+	}
+
+	@Column(name = "account_Number")
 	private long accountNumber;
 
 	@Column(name = "amount")
@@ -23,7 +31,7 @@ public class Transaction {
 	@Column(name="status")
 	private String status;
 	
-	@Column(name = "transactionId")
+	@Column(name = "transaction_Id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long transactionId;
@@ -31,6 +39,18 @@ public class Transaction {
 	@Column(name = "type")
 	private String transactionType;
 	
+	@Column(name = "transaction_date")
+	@CreationTimestamp
+	public Timestamp transactionDate;
+	
+	public Timestamp getTransactionDate() {
+		return transactionDate;
+	}
+
+	public void setTransactionDate(Timestamp transactionDate) {
+		this.transactionDate = transactionDate;
+	}
+
 	public long getAccountNumber() {
 		return accountNumber;
 	}
